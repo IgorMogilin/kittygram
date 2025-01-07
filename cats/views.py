@@ -1,15 +1,14 @@
-# Обновлённый views.py
-from rest_framework import generics
+from rest_framework import viewsets
 
-from .models import Cat
-from .serializers import CatSerializer
+from cats.models import Cat, Owner
+from cats.serializers import CatSerializer, OwnerSerializer
 
 
-class CatList(generics.ListCreateAPIView):
+class CatViewset(viewsets.ModelViewSet):
     queryset = Cat.objects.all()
     serializer_class = CatSerializer
 
 
-class CatDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cat.objects.all()
-    serializer_class = CatSerializer
+class OwnerViewset(viewsets.ModelViewSet):
+    queryset = Owner.objects.all()
+    serializer_class = OwnerSerializer
